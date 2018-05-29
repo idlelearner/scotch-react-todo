@@ -3,12 +3,12 @@ import { render } from 'react-dom';
 import axios from 'axios';
 
 console.clear();
-
+//https://scotch.io/tutorials/create-a-simple-to-do-app-with-react
 const Title = ({todoCount}) => {
   return (
     <div>
        <div>
-          <h1>to-do ({todoCount})</h1>
+          <h1>Dhass to-do ({todoCount})</h1>
        </div>
     </div>
   );
@@ -56,7 +56,8 @@ class TodoApp extends React.Component{
     this.state = {
       data: []
     }
-    this.apiUrl = 'https://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
+    //this.apiUrl = 'https://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
+    this.apiUrl = 'http://localhost:3000/todo'
   }
   // Lifecycle method
   componentDidMount(){
@@ -74,6 +75,7 @@ class TodoApp extends React.Component{
     // Update data
     axios.post(this.apiUrl, todo)
        .then((res) => {
+          console.log(res.data)
           this.state.data.push(res.data);
           this.setState({data: this.state.data});
        });
